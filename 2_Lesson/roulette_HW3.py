@@ -54,8 +54,8 @@ class WheelRoulette:
                 # Calling the next node
                 self.next = WheelRoulette(f"Round nr {WheelRoulette.rounds}")
             if answer == 'no':
-                print("Thanks and see you next time, you balance is:",
-                      WheelRoulette.total_amount)
+                print(
+                    f"Thanks and see you next time, you balance is: {WheelRoulette.total_amount}EUR")
 
     def user_choice(self):
         while True:
@@ -82,11 +82,13 @@ class WheelRoulette:
             else:
                 WheelRoulette.total_amount += 2
 
-            print("You Won, your new balance is", WheelRoulette.total_amount)
+            print(
+                f"You Won, your new balance is {WheelRoulette.total_amount}EUR")
         else:
             WheelRoulette.total_amount -= 2
 
-            print("You Lose, your new balance is", WheelRoulette.total_amount)
+            print(
+                f"You Lose, your new balance is {WheelRoulette.total_amount}EUR")
 
 
 player = WheelRoulette("Welcome to Casino-Royal, ROUND 1")
