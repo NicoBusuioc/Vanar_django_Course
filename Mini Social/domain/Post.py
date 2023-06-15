@@ -12,6 +12,8 @@ class Post:
     def __str__(self):
         return f"Post({self.id})\n{self.title}\n{self.body}\n{self.author}\n"
 
+    # NEVER CALL THIS METHOD DIRECTLY!!!
+    # it should always be called from USER class method: removeComment()
     def removeComment(self, comment):
         for item in self.comments:
             if item is comment:
