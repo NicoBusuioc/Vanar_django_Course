@@ -1,0 +1,9 @@
+
+connect:  psql -U postgres       
+    password: qazwsx
+list of databases:  \l
+connect to a db:    \c <db_name>
+list of tables:     \d 
+certain table info: \d <table_name>
+
+cheat sheet online: https://postgrescheatsheet.com/#/tables
