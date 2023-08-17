@@ -1,4 +1,5 @@
 import psycopg2
+from random import randint
 from .model import Model
 
 ## using static and dynamic functions
@@ -12,6 +13,9 @@ class User(Model):
 
     def __str__(self) -> str:
         return f"id: {self.id} username: {self.username} email: {self.email} aaand pw: {self.password}"
+    
+    def randomId():
+        return randint(1_000_000_000, 9_999_999_999)
     
     # CRUD
     def create(id, username, email, password):
