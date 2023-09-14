@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up User</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+    <div class="allItems">
+        <div class="mainWindow">
+            <form>
+                <h2>Create New Account</h2>
+                <label for="email">Email</label>
+                <input type="email" name="Email" required>
+                <label for="username">Username</label>
+                <input type="text" name="username" required>
+        
+                <label for="password">
+                    Password
+                </label>
+                
+                <input type="password" name="password" required>
+                <label for="password">
+                    Repeat Password
+                </label>
+                <input type="password" name="password" required>
+        
+                <div class="checkboxDiv">
+                    <label for="checkbox"></label>
+                    <input type="checkbox" name="checkbox" required> Agree with terms and conditions
+                </div>
+                
+                <br>
+                <button>Register</button>
+                
+            </form>
+        </div>
+        <br>
+        <span>
+            <a href="#">Contact</a>
+            <a href="#">Privacy & terms</a>
+            <p> {{year}} &copy; MSM corp</p>
+        </span>
+    </div>
+</body>
+</html>

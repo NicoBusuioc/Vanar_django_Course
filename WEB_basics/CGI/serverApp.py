@@ -10,8 +10,11 @@
 
 from http.server import HTTPServer, CGIHTTPRequestHandler
 import cgitb
+import os
+import stat
 cgitb.enable()
 CGIHTTPRequestHandler.cgi_directories = ['/']
+
 
 webServer = HTTPServer(("localhost", 8000), CGIHTTPRequestHandler)
 print("starting server...")

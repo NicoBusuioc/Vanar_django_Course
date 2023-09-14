@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In User</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    
+</head>
+<body>
+    <div class="allItems">
+        <div class="mainWindow">
+            <form>
+                <h2>Sign In To Your Account</h2>
+                <label for="username">Username</label>
+                <input type="text" name="username">
+        
+                <br>
+                <label for="password">
+                    Password
+                    <a href="#">Forgot your password?</a>
+                </label>
+                
+                <input type="password" name="password">
+        
+                <div class="checkboxDiv">
+                    <label for="checkbox"></label>
+                    <input type="checkbox" name="checkbox"> Stay signed in
+                </div>
+                
+                <br>
+                <button>Continue</button>
+                
+            </form>
+        </div>
+
+        <p>
+            Don't have an account? <a href="">Sign up</a>
+        </p>
+        <span>
+            <a href="#">Contact</a>
+            <a href="#">Privacy & terms</a>
+            <p> {{year}} &copy; MSM corp</p>
+        </span>
+    </div>
+</body>
+</html>

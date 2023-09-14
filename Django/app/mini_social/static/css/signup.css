@@ -1,0 +1,90 @@
+body{
+    background-color:white;
+    max-width: 30%;
+    margin: auto;
+    margin-top: 3%;
+}
+.allItems{
+    max-width: 100%;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
+}
+.mainWindow{
+    background: rgb(184, 162, 162);
+    border-radius: 10px;
+    padding: 1% 10% 10%;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px; 
+}
+h2{
+    padding-bottom: 0%;
+    font-size: 150%;
+    color: #9317e6;
+    text-align: center;
+}
+input{
+    display: block;
+    font-size: 16px;
+    margin-bottom: 2%;
+    padding: 3% 0%;
+    width: 100%;
+    border: unset;
+    border-radius: 4px;
+    outline-color: rgba(84, 212, 191, 0.5);
+    background-color: rgb(255, 255, 255);
+    box-shadow:rgba(60, 66, 87, 0.16) 0px 0px 0px 1px;
+}
+input[type="checkbox"]{
+    
+    display: inline;
+    width: 20px;
+    /* height: 20%; */
+    /* margin: 8px 0px;  */
+    box-shadow: unset;
+    min-height: unset;
+}
+label, a {
+    margin-bottom: 2%;
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+}
+label>a{
+    display: inline;
+    text-decoration: unset;
+    color: #9054b8;
+    float: right;
+}
+label>a:hover{
+    color: rgb(80, 76, 76);
+}
+button{
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    font-size: 25px;
+    width: 100%;
+    color: #fff;
+    background-image: linear-gradient(to right,#db3a93,#f15c41)!important;
+    border-radius: 10px;
+    padding: 3% 0%;
+    margin-top: 2%;
+}
+button:hover{
+    background-color: #e6375a;
+    background-image: none!important;
+    cursor: pointer;
+}
+p>a{
+    display: inline;
+    text-decoration: unset;
+}
+p:last-of-type{
+    text-align: center
+}
+span:last-of-type>a{
+    text-decoration: unset;
+}
+span:last-of-type{
+    display: block;
+    text-align: center;
+}
+
