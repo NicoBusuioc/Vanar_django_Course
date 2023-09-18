@@ -8,5 +8,6 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', homePage),
     path('user/signin', signInPage),
+    path('user/signin-action', signInAction),
     path('user/signup', signUpPage),
 ]
