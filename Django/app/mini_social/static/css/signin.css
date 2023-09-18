@@ -1,11 +1,11 @@
 body{
     background-color:white;
-    max-width: 500px;
+    max-width: 30%;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 3%;
 }
 .allItems{
-    max-width: 400px;
+    max-width: 100%;
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
 }
 .mainWindow{
@@ -33,12 +33,12 @@ input{
 }
 input[type="checkbox"]{
     
+    display: inline;
     width: 20px;
-    height: 15px;
+    /* height: 20%; */
     /* margin: 8px 0px;  */
     box-shadow: unset;
     min-height: unset;
-    display: inline;
 }
 label, a {
     margin-bottom: 2%;
@@ -50,7 +50,6 @@ label>a{
     display: inline;
     text-decoration: unset;
     color: #9054b8;
-    margin-right: 0;
     float: right;
 }
 label>a:hover{
@@ -65,8 +64,8 @@ button{
     color: #fff;
     background-image: linear-gradient(to right,#db3a93,#f15c41)!important;
     border-radius: 10px;
-    padding: 5% 0%;
-    margin-top: 5%;
+    padding: 3% 0%;
+    margin-top: 2%;
 }
 button:hover{
     background-color: #e6375a;
@@ -87,9 +86,5 @@ span:last-of-type{
     display: block;
     text-align: center;
 }
-footer{
-    display: inline;
-    color: blue;
-    text-align: center;
-}
+
 
