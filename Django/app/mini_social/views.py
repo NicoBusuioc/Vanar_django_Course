@@ -8,11 +8,26 @@ from datetime import date
 year = date.today().year
 
 def homePage(request):
+
+  #check if 'bannerViewd' is in action
+  bannerViewed = request.session.get('bannerViewed', False)
+  sessionViews = request.session.get('viewsPerSession', 0)
+
+  # mark the 'bannerViewd' to True inside the session
+  request.session['bannerViewed'] = True
+  request.session['viewsPerSession'] = sessionViews + 1
+
   template = loader.get_template('home.html')
   return HttpResponse(template.render({
                                       'message': "Welcome to our mini social network",
-                                      'year': year
+                                      'year': year,
+                                      'bannerViewed': bannerViewed,
+                                      'viewsPerSession': sessionViews
                                       }))
+
+
+
+
 ###
 # There are 3 ways to call a WebPage, the last one is most used
 ##
