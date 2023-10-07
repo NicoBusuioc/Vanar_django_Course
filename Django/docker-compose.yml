@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  pgdb:
+    image: postgres:15.4-alpine3.18
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=qazwsx
+      - POSTGRES_DB=mini_social_db
+    ports:
+      - 6000:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data

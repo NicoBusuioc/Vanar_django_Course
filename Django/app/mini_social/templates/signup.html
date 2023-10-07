@@ -10,10 +10,10 @@
 <body>
     <div class="allItems">
         <div class="mainWindow">
-            <form>
+            <form action="/user/signup-action">
                 <h2>Create New Account</h2>
                 <label for="email">Email</label>
-                <input type="email" name="Email" required>
+                <input type="email" name="email" required>
                 <label for="username">Username</label>
                 <input type="text" name="username" required>
         
@@ -25,13 +25,15 @@
                 <label for="password">
                     Repeat Password
                 </label>
-                <input type="password" name="password" required>
+                <input type="password" name="confirm_password" required>
         
                 <div class="checkboxDiv">
                     <label for="checkbox"></label>
                     <input type="checkbox" name="checkbox" required> Agree with terms and conditions
                 </div>
                 
+                {% include 'messages.html' %}
+
                 <br>
                 <button>Register</button>
                 

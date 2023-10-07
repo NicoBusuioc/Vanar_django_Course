@@ -1,4 +1,6 @@
+__pycache__
 venv/
+Django/data
+Django/app/mini_social/migrations/
 Django/app/sess/*
 !Django/app/sess/.gitkeep
-
