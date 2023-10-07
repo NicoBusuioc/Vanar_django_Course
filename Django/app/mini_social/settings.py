@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'mini_social.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mini_social_db',
+        'USER': 'postgres',
+        'PASSWORD': 'qazwsx',
+        'HOST': 'localhost',
+        'PORT': '6000',
     }
 }
 

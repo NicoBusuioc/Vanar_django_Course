@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+    <div class="parent">
+        <div class="div_logout_btn">
+            <button><a href="/user/logout">Logout</a></button>
+        </div>
+        <div class="usr_profile">
+            <h1>Your Profile</h1>
+            <hr>
+            <div class="usr_content">
+                <p><b>User:</b>&nbsp;&nbsp; {{user.username}}</p>
+                <p><b>Email:</b>&nbsp; {{user.email}}</p>
+            </div>
+        </div>
+        <div class="footer">
+            <hr>
+            <a href="#">Contact</a>
+            <a href="#">Privacy & terms</a>
+            <p> {{year}} &copy; MSM corp</p>
+        </div>
+    </div>
+    
+</body>
+</html>
