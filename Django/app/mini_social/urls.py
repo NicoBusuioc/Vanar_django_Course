@@ -14,4 +14,6 @@ urlpatterns = [
     path('user/signup', signUpPage),
     path('createpost', createPost),
     path('user/profile', profilePage),
+    path('user/profile/edit', profileEditPage),
+    path('user/profile/save', profileSavAction),
 ]

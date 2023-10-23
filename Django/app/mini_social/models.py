@@ -9,3 +9,4 @@ class Post(Model):
 
 class CustomUser(User):
     rating = DecimalField(max_digits=2, decimal_places=1, default=0)
+    avatar = CharField(max_length=60, default='')
