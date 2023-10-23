@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Post, CustomUser
 from django.contrib.auth import authenticate, login, logout
+from random import randint
+import time
 
 
 from datetime import date
@@ -93,9 +95,11 @@ def createPost(request):
 
 
 def profilePage(request):
+  user = CustomUser.objects.get(pk=request.user.id)
+  request.user = user
   dict = {
     'year': year,
-    'user': request.user,
+    'user': user,
     }
   
   if request.user.is_authenticated:
@@ -106,4 +110,47 @@ def profilePage(request):
 
 def logOut(request):
   logout(request)
+  return redirect("/user/signin")
+
+def profileEditPage(request):
+  dict = {
+    'year': year,
+    'user': request.user,
+    }
+  
+  if request.user.is_authenticated:
+    return render(request, 'profile-edit.html', dict)
+  else:
+    return redirect("/user/signin")
+  
+def profileSavAction(request):
+  # create a local variable with user
+  user = CustomUser.objects.get(pk=request.user.id)
+
+  if request.FILES.get('avatar'):
+    inputFileAvatar = request.FILES['avatar']
+    avatarName = f"images/avatar{randint(1000, 9000)}-{time.time()}.png"
+    user.avatar = avatarName  #save image name in order to read it later when rendering profile.html
+    with open(f"./Django/app/mini_social/static/{avatarName}", "wb+") as f:
+      for chunk in inputFileAvatar.chunks():
+        f.write(chunk)
+  else:
+    pass   # No File was imported
+
+  inputUsername = request.POST['username']
+  inputEmail = request.POST['email']
+  inputPassword = request.POST['password']
+  inputConfPassword= request.POST['confirm_password']
+
+
+  user.username = inputUsername
+  user.email = inputEmail
+  if inputPassword != "":
+    if inputPassword == inputConfPassword:
+      user.set_password(inputPassword)
+    else:
+      messages.error(request, "Passwords do not match!")
+      return redirect("/user/signin") ## in case of error exit witthout saving
+  
+  user.save()
   return redirect("/user/signin")

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up User</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+    <div class="allItems">
+        <div class="mainWindow">
+            <form action="/user/profile/save" method="post" enctype="multipart/form-data">
+                <h2>Edit Account Data</h2>
+                <label for="avatar">Avatar</label>
+                <input type="file" name="avatar" id="">
+
+                <label for="email">Email</label>
+                <input type="email" name="email" value="{{user.email}}" required>
+
+                <label for="username">Username</label>
+                <input type="text" name="username" value="{{user.username}}" required>
+        
+                <label for="password">Password</label>
+                <input type="password" name="password" required>
+
+                <label for="password">Repeat Password</label>
+                <input type="password" name="confirm_password" required>
+        
+                <div class="checkboxDiv">
+                    <label for="checkbox"></label>
+                    <input type="checkbox" name="checkbox" required> Agree with terms and conditions
+                </div>
+                
+                {% include 'messages.html' %}
+
+                <br>
+                <button>Save</button>
+                {% csrf_token %}
+            </form>
+        </div>
+        <br>
+        <span>
+            <a href="#">Contact</a>
+            <a href="#">Privacy & terms</a>
+            <p> {{year}} &copy; MSM corp</p>
+        </span>
+    </div>
+</body>
+</html>

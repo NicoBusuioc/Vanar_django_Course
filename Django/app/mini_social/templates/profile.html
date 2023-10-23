@@ -17,8 +17,10 @@
             <h1>Your Profile</h1>
             <hr>
             <div class="usr_content">
+                <img src="{% static user.avatar %}" width="100px">
                 <p><b>User:</b>&nbsp;&nbsp; {{user.username}}</p>
                 <p><b>Email:</b>&nbsp; {{user.email}}</p>
+                <a href="/user/profile/edit">EDIT User Profile</a>
             </div>
         </div>
         <div class="footer">
