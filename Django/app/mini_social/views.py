@@ -6,6 +6,7 @@ from .models import Post, CustomUser
 from django.contrib.auth import authenticate, login, logout
 from random import randint
 import time
+from django.core.mail import send_mail
 
 
 from datetime import date
@@ -46,21 +47,55 @@ def signInPage(request):
 ############################################################__3
   return render(request, 'signin.html', dict)
 
-
+### This function is called twice because of the 2FA.
+### 1st Time there is the 1st Authentication, where there comes the username and password
+### then it will automattically send an email
+### When clicking the email confirmation, then it will be the 2nd CALL. 
+### 2ND Call has no username and password, it has only the secret_key. 
+#   This is why we are saving username and password additionally into session(not really a good practice)
+### The 1st Call has no secret_key!!!
 def signInAction(request):
   #get values from the form
-  inputUsername = request.GET['username']
-  inputPassword = request.GET['password']
+  inputUsername = request.GET.get('username', None)
+  inputPassword = request.GET.get('password', None)
+  inputKey      = request.GET.get('key', None)
 
-  user = authenticate(request, username=inputUsername, password=inputPassword)
+  #1st Call
+  if inputKey is None:
+    user = authenticate(request, username=inputUsername, password=inputPassword)
+    if user is not None:
+      secret_key = randint(1_000, 9_000)   ## generate the secret_key
+      #  2FA - 2nd Factor Authetication
+      send_mail(
+          "Confirm SignIn",
+          f"Here is your key: {secret_key}",
+          "nico.buscc@gmail.com",
+          ["nicolaie.busuioc@gmail.com"],  #[user.email] -- now i hardcoded my email in order to see if it works
+          fail_silently=False,
+          html_message=f"Click here to confirm <a href='http://127.0.0.1:8000/user/signin-action?key={secret_key}'>CONFIRM</a>",
+      )
+      request.session['signin_secret_key'] = secret_key
+      request.session['signin_username']   = inputUsername
+      request.session['signin_password']   = inputPassword
+      return HttpResponse("An email message with your confimation code was sent")
+      
 
-  if user is not None:
-    login(request, user)
-    return redirect("/user/profile")
+    messages.error(request, "Wrong Credentials, try again.")
+    # return HttpResponseRedirect("/user/signin")
+    return redirect("/user/signin")
+  else:
+    # this is the 2nd CALL - Email confirm stage
+    if int(inputKey) == request.session.get('signin_secret_key', None):
+      inputUsername = request.session.get('signin_username', None)
+      inputPassword = request.session.get('signin_password', None)
+      user = authenticate(request, username=inputUsername, password=inputPassword)
+      login(request, user)
+      return redirect("/user/profile")
+    else:
+      messages.error(request, "Wrong, Secret Key Missmatch!")
+      # return HttpResponseRedirect("/user/signin")
+      return redirect("/user/signin")
 
-  messages.error(request, "Wrong Credentials, try again.")
-  # return HttpResponseRedirect("/user/signin")
-  return redirect("/user/signin")
 
 def signUpAction(request):
   inputUsername = request.GET['username']
